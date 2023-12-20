@@ -2,26 +2,209 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply text-text_color text-base bg-bg_primary
+}
+
+.section-padding {
+  padding-top: 80px;
+}
+
+.active_link {
+  @apply flex gap-1 items-center after:min-w-[0px] after:h-0.5 after:bg-primary after:rounded-lg before:min-w-[0px] before:h-0.5 before:bg-primary before:rounded-lg after:transition-all after:duration-500 before:transition-all before:duration-500
+}
+
+
+/* humberger menu styles */
+
+.hamburger {
+  cursor: pointer;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  height: 3em;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger .line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  @apply stroke-primary
+}
+
+.hamburger .line_top_bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked+svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked+svg .line_top_bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+
+/* button css styles */
+
+.button {
+  @apply border-primary border-[3px] tracking-wide uppercase inline-block text-center font-bold px-6 py-2.5 rounded-sm relative text-white no-underline transition-all duration-300 ease-in z-[1];
+}
+
+.button:before {
+  @apply absolute top-0 left-1/2 right-1/2 h-full bottom-0 opacity-0 content-[''] bg-primary z-[-1] transition-all duration-300 ease-in;
+}
+
+.button:hover,
+.button:focus {
+  @apply text-white
+}
+
+.button:hover:before,
+.button:focus:before {
+  @apply left-0 right-0 opacity-100 transition-all duration-500 ease-out;
+}
+
+.button:active {
+  @apply scale-90
+}
+
+
+/* swiepr buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  width: 50px !important;
+  padding: 0 !important;
+  height: 120px !important;
+}
+
+
+.swiper-button-prev::after,
+.swiper-button-prev::before,
+.swiper-button-next::before,
+.swiper-button-next::after {
+  content: '' !important;
+  background-position: center center;
+  background-size: contain;
+  width: 100%;
+  position: absolute;
+  top: 0 !important;
+  height: 100%;
+  background-repeat: no-repeat;
+  transition: all 0.4s ease-in-out;
+}
+
+.swiper-button-prev::after {
+  left: -10px !important;
+  background-image: url("../../public/left.png");
+}
+
+.swiper-button-prev::before {
+  left: -10px !important;
+  background-image: url("../../public/left-hover.png");
+}
+
+.swiper-button-prev:hover::after {
+  opacity: 0;
+}
+
+.swiper-button-next::after {
+  background-image: url("../../public/right.png");
+  right: -10px !important;
+}
+
+.swiper-button-next::before {
+  background-image: url("../../public/right-hover.png");
+  right: -10px !important;
+}
+
+.swiper-button-next:hover::after {
+  opacity: 0;
+}
+
+/* recipe cart */
+
+.recipe-cart {
+  @apply relative rounded-lg bg-bg_secondary shadow-xl p-4;
+  -ms-transform: preserve-3d;
+  transform: preserve-3d;
+  -webkit-perspective: 2000px;
+  perspective: 2000px;
+}
+
+.cart-cover {
+  @apply absolute top-0 bg-bg_secondary w-full h-full rounded-xl transition-all duration-500 ease-in-out shadow-lg origin-[0] left-0 z-10;
+}
+
+.recipe-cart:hover .cart-cover {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: rotatey(-83deg);
+  -ms-transform: rotatey(-83deg);
+  transform: rotatey(-83deg);
+}
+
+
+
+/* loader css styls */
+
+.loader-container {
+  @apply overflow-hidden bg-bg_secondary
+}
+
+@keyframes leftToRight {
+  0% {
+    transform: translateX(-100%)
+  }
+
+  100% {
+    transform: translateX(100%)
+  }
+}
+
+
+.inner-loader {
+  @apply h-full;
+  background: linear-gradient(to right, transparent, #1d4161, transparent);
+  animation: leftToRight 1s linear infinite;
+}
+
+.markdown ol {
+  @apply list-decimal
+}
+
+.markdown strong {
+  @apply text-heading
+}
+
+.markdown p {
+  @apply my-3
+}
+
+.markdown ul {
+  @apply list-disc
+}
+
+.markdown ul,
+.markdown ol {
+  @apply pl-8
+}
+
+.markdown li {
+  @apply leading-loose
 }
