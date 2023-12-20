@@ -44,19 +44,19 @@ const About = async () => {
               <p>
                 Think of us as your friendly cooking guide. Rimi, the person
                 behind the kitchen magic, wants to make cooking simple and
-                enjoyable for everyone, whether you're a kitchen pro or just
-                starting out.
+                enjoyable for everyone, whether you&apos;re a kitchen pro or
+                just starting out.
               </p>
               <p>
-                On our website, you'll find all kinds of recipes from around the
-                world. We have easy-to-follow instructions and colorful pictures
-                to help you make delicious meals. Rimi also likes to share
-                stories about the recipes, adding a personal touch to the
-                cooking experience.
+                On our website, you&apos;ll find all kinds of recipes from
+                around the world. We have easy-to-follow instructions and
+                colorful pictures to help you make delicious meals. Rimi also
+                likes to share stories about the recipes, adding a personal
+                touch to the cooking experience.
               </p>
               <p>
                 But <span className="font-semibold">{name}</span> is more than
-                just recipes. It's a place where people who love food come
+                just recipes. It&apos;s a place where people who love food come
                 together. We explore new ingredients, try out different cooking
                 tricks, and share our kitchen adventures with you.
               </p>

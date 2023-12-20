@@ -1,6 +1,5 @@
 "use client";
 
-import { useAppSelector } from "@/redux/hooks";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { MdFirstPage } from "react-icons/md";
@@ -14,10 +13,7 @@ const Pagination = ({ totalPage }: PaginationProps) => {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  // const value = useAppSelector((state) => state.pagination.value);
-
   const currentPage = searchParams.get("page") || 1;
-  const perPage = searchParams.get("perPage") || 5;
 
   return (
     <div className="pagination mt-10">

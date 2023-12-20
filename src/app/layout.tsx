@@ -3,7 +3,6 @@ import { Roboto_Condensed } from "next/font/google";
 import "./globals.css";
 import Header from "./_conponents/Header";
 import Footer from "./_conponents/Footer";
-import StoreProvider from "@/redux/StoreProvider";
 
 const inter = Roboto_Condensed({
   subsets: ["latin"],
@@ -23,11 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StoreProvider>
-          <Header />
-          {children}
-          <Footer />
-        </StoreProvider>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );
