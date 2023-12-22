@@ -79,16 +79,16 @@ module.exports = ({ env }) => {
         max: env.int("DATABASE_POOL_MAX", 10),
       },
     },
-    sqlite: {
-      connection: {
-        filename: path.join(
-          __dirname,
-          "..",
-          env("DATABASE_FILENAME", ".tmp/data.db")
-        ),
-      },
-      useNullAsDefault: true,
-    },
+    // sqlite: {
+    //   connection: {
+    //     filename: path.join(
+    //       __dirname,
+    //       "..",
+    //       env("DATABASE_FILENAME", ".tmp/data.db")
+    //     ),
+    //   },
+    //   useNullAsDefault: true,
+    // },
   };
 
   return {
