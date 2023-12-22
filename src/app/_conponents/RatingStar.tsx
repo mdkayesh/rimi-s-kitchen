@@ -5,7 +5,7 @@ const RatingStar = ({ rating }: { rating: number }) => {
   return (
     <div className="flex gap-1 items-center">
       {[...Array(5)].map((_, index) => (
-        <p key={index} className={index <= rating ? "text-yellow-500" : ""}>
+        <p key={index} className={index + 1 <= rating ? "text-yellow-500" : ""}>
           <MdStar />
         </p>
       ))}

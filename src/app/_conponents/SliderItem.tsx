@@ -3,10 +3,9 @@ import Link from "next/link";
 import React from "react";
 import RatingStar from "./RatingStar";
 import { RecipeItem } from "@/types/types";
-import { BASE_URL } from "@/lib/fetchDataFromApi";
 
 const SliderItem = ({ attributes }: RecipeItem) => {
-  const { title, about_text, slug, thumbnail, rating } = attributes;
+  const { title, about_text, slug, thumbnail, rating, categories } = attributes;
 
   let imgUrl = "";
 
@@ -27,8 +26,19 @@ const SliderItem = ({ attributes }: RecipeItem) => {
       />
       <div className="px-6 -mt-12 z-10">
         <div className="text-center bg-bg_secondary rounded-lg px-3 py-5 relative mx-auto">
-          <p className="text-sm text-primary">Breakfast</p>
-          <h3 className="font-semibold text-lg text-heading mt-2">{title}</h3>
+          <div className="flex flex-wrap gap-3 items-center mt-3 justify-center">
+            {categories?.data?.map((category) => (
+              <h3
+                className="category bg-primary px-2 text-sm rounded-lg text-white w-fit"
+                key={category.id}
+              >
+                {category?.attributes?.title}
+              </h3>
+            ))}
+          </div>
+          <h3 className="font-semibold text-lg text-heading mt-3 line-clamp-2">
+            {title}
+          </h3>
           <div className="flex gap-1 items-center justify-center mt-1">
             <RatingStar rating={rating} />
           </div>
