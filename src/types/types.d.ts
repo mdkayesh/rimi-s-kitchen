@@ -27,7 +27,6 @@ type Recipe = {
   ingredients: number;
   servings: number;
   minutes: number;
-  tags: string[];
   rating: number;
   youtube_link: string;
   about_text: string;
@@ -67,7 +66,7 @@ type Category = {
   attributes: {
     title: string;
     img: {
-      data: ThumbnailImg[];
+      data: ThumbnailImg;
     };
     createdAt: string;
     updatedAt: string;

@@ -3,6 +3,7 @@ import Pagination from "../_components/Pagination";
 import { Recipes } from "@/types/types";
 import fetchDataFromApi from "@/lib/fetchDataFromApi";
 import RecipeCart from "@/app/_conponents/RecipeCart";
+import { Metadata } from "next";
 
 type CategoryProps = {
   params: { categoryId: string };
@@ -10,14 +11,23 @@ type CategoryProps = {
     [key: string]: string | string[] | undefined;
   };
 };
-//
+
+// dynamic meta data
+export async function generateMetadata({
+  params: { categoryId },
+}: CategoryProps): Promise<Metadata> {
+  return {
+    title: categoryId?.toUpperCase(),
+  };
+}
+
 const Category = async ({
   params: { categoryId },
   searchParams,
 }: CategoryProps) => {
   const page = Number(searchParams?.page) || 1;
   const recipes: Recipes = await fetchDataFromApi(
-    `/recipes?populate=categories&populate=thumbnail&filters[categories][title]=${categoryId}&pagination[pageSize]=10&pagination[page]=${page}`
+    `/recipes?populate=categories&populate=thumbnail&filters[categories][title][$eq]=${categoryId}&pagination[pageSize]=10&pagination[page]=${page}`
   );
 
   if (recipes?.data?.length === 0) {

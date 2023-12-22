@@ -45,7 +45,7 @@ export default function PopularSlider({
         loop={true}
         className="mySwiper"
       >
-        {recipeItems.map((item) => (
+        {recipeItems?.map((item) => (
           <SwiperSlide key={item.id}>
             <SliderItem {...item} />
           </SwiperSlide>

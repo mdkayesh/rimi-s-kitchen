@@ -1,4 +1,5 @@
-import fetchDataFromApi, { BASE_URL } from "@/lib/fetchDataFromApi";
+import { IMAGE_URL } from "@/data/data";
+import fetchDataFromApi from "@/lib/fetchDataFromApi";
 import { Categories } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,9 +21,7 @@ const Banner = async () => {
               className="flex flex-col items-center gap-4 px-3 group"
             >
               <Image
-                src={`${BASE_URL}${
-                  item?.attributes?.img?.data?.[0]?.attributes?.url || ""
-                }`}
+                src={`${item?.attributes?.img?.data?.attributes?.url || ""}`}
                 alt={item?.attributes?.title}
                 width={500}
                 height={500}

@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { RecipeItem } from "@/types/types";
 import RatingStar from "./RatingStar";
-import { BASE_URL } from "@/lib/fetchDataFromApi";
 
 const RecipeCart = ({ attributes }: RecipeItem) => {
   const {
@@ -26,7 +25,7 @@ const RecipeCart = ({ attributes }: RecipeItem) => {
 
   thumbnail?.data?.forEach((item) => {
     if (item.attributes.width === 400 && item.attributes.height === 600) {
-      imgUrl = `${BASE_URL}${item.attributes.url}`;
+      imgUrl = `${item.attributes.url}`;
     }
   });
 

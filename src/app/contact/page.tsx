@@ -4,6 +4,11 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { IoIosMailOpen } from "react-icons/io";
 import { FaAddressBook } from "react-icons/fa6";
 import ContactForm from "./_components/ContactForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+};
 
 const Contact = () => {
   return (

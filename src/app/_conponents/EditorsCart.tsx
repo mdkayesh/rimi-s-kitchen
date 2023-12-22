@@ -6,7 +6,7 @@ import { PiNotebook } from "react-icons/pi";
 import { SlPeople } from "react-icons/sl";
 import { RecipeItem } from "@/types/types";
 import RatingStar from "./RatingStar";
-import { BASE_URL } from "@/lib/fetchDataFromApi";
+import { IMAGE_URL } from "@/data/data";
 
 const EditorsCart = ({ attributes }: RecipeItem) => {
   const { title, ingredients, servings, slug, minutes, thumbnail, rating } =
@@ -16,7 +16,7 @@ const EditorsCart = ({ attributes }: RecipeItem) => {
 
   thumbnail?.data?.forEach((item) => {
     if (item.attributes.width === 400 && item.attributes.height === 600) {
-      imgUrl = `${BASE_URL}${item.attributes.url}`;
+      imgUrl = `${item.attributes.url}`;
     }
   });
 

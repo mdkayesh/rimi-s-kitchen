@@ -12,7 +12,7 @@ const RelatedItems = ({ attributes }: RecipeItem) => {
 
   thumbnail?.data?.forEach((item) => {
     if (item.attributes.width === 600 && item.attributes.height === 400) {
-      imgUrl = `${BASE_URL}${item.attributes.url}`;
+      imgUrl = `${item.attributes.url}`;
     }
   });
 

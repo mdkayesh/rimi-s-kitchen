@@ -1,10 +1,10 @@
 import React from "react";
 import CommonHero from "../_conponents/CommonHero";
 import Image from "next/image";
-// import { racipeItems } from "../_sections/LatestRecipes";
 import EditorsCart from "../_conponents/EditorsCart";
 import fetchDataFromApi from "@/lib/fetchDataFromApi";
 import { Recipes } from "@/types/types";
+import { Metadata } from "next";
 
 const name = "Rimi's Kitchen";
 
@@ -14,6 +14,10 @@ const fetchLatestRecipes = async () => {
     "/recipes?populate[0]=categories&populate[1]=thumbnail&filters[type][$containsi]=latest&pagination[pageSize]=3"
   );
   return data;
+};
+
+export const metadata: Metadata = {
+  title: "About",
 };
 
 const About = async () => {

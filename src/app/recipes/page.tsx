@@ -3,6 +3,7 @@ import RecipeCart from "@/app/_conponents/RecipeCart";
 import Pagination from "./_components/Pagination";
 import { Recipes } from "@/types/types";
 import fetchDataFromApi from "@/lib/fetchDataFromApi";
+import { Metadata } from "next";
 
 type RecipesProps = {
   searchParams?: {
@@ -10,17 +11,13 @@ type RecipesProps = {
   };
 };
 
+export const metadata: Metadata = {
+  title: "Recipes",
+};
+
 const Recipes = async ({ searchParams }: RecipesProps) => {
   const page = Number(searchParams?.page) || 1;
   const searchQuery = searchParams?.q || "";
-  // const perPage = Number(searchParams?.perPage) || 5;
-
-  // const start = (page - 1) * perPage;
-  // const end = start + perPage;
-
-  // // const entries = racipeItems.slice(start, end);
-
-  // // console.log("page", searchParams);
 
   if (searchQuery) {
     const recipes: Recipes = await fetchDataFromApi(

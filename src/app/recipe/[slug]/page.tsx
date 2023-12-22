@@ -4,6 +4,7 @@ import RatingStar from "@/app/_conponents/RatingStar";
 import RelatedItems from "@/app/_conponents/RelatedItems";
 import fetchDataFromApi from "@/lib/fetchDataFromApi";
 import { RecipeItem, Recipes } from "@/types/types";
+import { Metadata } from "next";
 import React from "react";
 import { IoMdTime } from "react-icons/io";
 import { PiNotebook } from "react-icons/pi";
@@ -32,6 +33,20 @@ const fetchRelatedRecipe = async (category: string) => {
   );
   return data;
 };
+
+// dynamic meta data
+export async function generateMetadata({
+  params: { slug },
+}: SingleRecipeProps): Promise<Metadata> {
+  const data: Recipes = await fetchSingleRecipe(slug);
+  const recipeItems: RecipeItem[] = data?.data;
+  const item = recipeItems?.[0]?.attributes;
+
+  return {
+    title: item?.title,
+    description: item?.about_text,
+  };
+}
 
 const SingleRecipe = async ({ params: { slug } }: SingleRecipeProps) => {
   const data: Recipes = await fetchSingleRecipe(slug);
@@ -71,7 +86,9 @@ const SingleRecipe = async ({ params: { slug } }: SingleRecipeProps) => {
             <div
               className="img max-h-[400px] aspect-video bg-center bg-cover bg-no-repeat bg-fixed w-full mt-7"
               style={{
-                backgroundImage: `url(http://localhost:1337${item?.thumbnail?.data?.[0]?.attributes?.url})`,
+                backgroundImage: `url(${
+                  item?.thumbnail?.data?.[0]?.attributes?.url || ""
+                })`,
               }}
             >
               <iframe

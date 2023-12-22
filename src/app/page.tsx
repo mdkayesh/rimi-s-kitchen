@@ -4,8 +4,6 @@ import LatestRecipes from "./_sections/LatestRecipes";
 import EditorsChoice from "./_sections/EditorsChoice";
 import PopularRecipe from "./_sections/PopularRecipe";
 
-export const revalidate = 0;
-
 export default function Home() {
   return (
     <main className="home">

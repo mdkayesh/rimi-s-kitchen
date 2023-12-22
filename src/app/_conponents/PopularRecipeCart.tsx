@@ -6,7 +6,7 @@ import { IoMdTime } from "react-icons/io";
 import { PiNotebook } from "react-icons/pi";
 import { SlPeople } from "react-icons/sl";
 import RatingStar from "./RatingStar";
-import { BASE_URL } from "@/lib/fetchDataFromApi";
+import { IMAGE_URL } from "@/data/data";
 
 const PopularRecipeCart = ({ attributes }: RecipeItem) => {
   const {
@@ -25,7 +25,7 @@ const PopularRecipeCart = ({ attributes }: RecipeItem) => {
 
   thumbnail?.data?.forEach((item) => {
     if (item.attributes.width === 600 && item.attributes.height === 400) {
-      imgUrl = `${BASE_URL}${item.attributes.url}`;
+      imgUrl = `${item.attributes.url}`;
     }
   });
 
@@ -43,7 +43,7 @@ const PopularRecipeCart = ({ attributes }: RecipeItem) => {
         </div>
 
         <div className="p-5 w-full md:w-1/2">
-          <h2 className="text-heading font-semibold text-xl mt-2 hover:text-primary transition-colors duration-300">
+          <h2 className="text-heading font-semibold capitalize text-xl mt-2 hover:text-primary transition-colors duration-300">
             {title}
           </h2>
           <div className="flex flex-wrap gap-3 items-center mt-3">
