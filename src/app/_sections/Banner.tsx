@@ -13,7 +13,7 @@ const Banner = async () => {
   return (
     <section id="banner">
       <div className="container py-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-[360px]:grid-cols-1 gap-x-5 gap-y-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 min-[700px]:lg:grid-cols-4 max-[320px]:grid-cols-1 gap-x-5 gap-y-8">
           {categories?.data?.map((item, index) => (
             <Link
               href={`/recipes/${item?.attributes?.title?.toLowerCase()}`}

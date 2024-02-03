@@ -9,11 +9,13 @@ type RecipesLayoutProps = {
   };
 };
 
-const RecipesLayout = ({ children, searchParams }: RecipesLayoutProps) => {
-  const query = searchParams?.perPage || "";
-  const currentPage = Number(searchParams?.page) || 1;
+export const revalidate = 60 * 60 * 24;
 
-  const total_page = 5;
+const RecipesLayout = ({ children }: RecipesLayoutProps) => {
+  // const query = searchParams?.perPage || "";
+  // const currentPage = Number(searchParams?.page) || 1;
+
+  // const total_page = 5;
 
   return (
     <main className="recipes">

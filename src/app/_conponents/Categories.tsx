@@ -23,7 +23,7 @@ const Categories = () => {
         setCategories(data.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        console.log("categories", error);
       }
     };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Pagination from "../_components/Pagination";
-import { Recipes } from "@/types/types";
+import { Categories, Recipes } from "@/types/types";
 import fetchDataFromApi from "@/lib/fetchDataFromApi";
 import RecipeCart from "@/app/_conponents/RecipeCart";
 import { Metadata } from "next";
@@ -11,6 +11,18 @@ type CategoryProps = {
     [key: string]: string | string[] | undefined;
   };
 };
+
+export async function generateStaticParams(): Promise<
+  { categoryId: string }[]
+> {
+  const data: Categories = await fetchDataFromApi(
+    "/categories?populate[0]=recipes&sort[0]=title:asc"
+  );
+
+  return data.data.map((category) => ({
+    categoryId: category.attributes.title,
+  }));
+}
 
 // dynamic meta data
 export async function generateMetadata({

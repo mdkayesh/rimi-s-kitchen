@@ -65,7 +65,7 @@ const SingleRecipe = async ({ params: { slug } }: SingleRecipeProps) => {
               {item?.categories?.data?.map((category) => (
                 <h3
                   className="category bg-primary px-2 text-sm rounded-lg text-white w-fit"
-                  key={category.id}
+                  key={category?.id}
                 >
                   {category?.attributes?.title}
                 </h3>
@@ -77,7 +77,7 @@ const SingleRecipe = async ({ params: { slug } }: SingleRecipeProps) => {
             <div className="flex gap-4 items-center mt-4 text-sm">
               <DateConverter publishedAt={item?.publishedAt} />
 
-              <p className="">By : Rimi Akter</p>
+              <p>By : Rimi Akter</p>
             </div>
 
             <div className="flex gap-6 items-center mt-3">
@@ -160,8 +160,8 @@ const SingleRecipe = async ({ params: { slug } }: SingleRecipeProps) => {
                 Related Recipes
               </h2>
               {related?.data?.map((r) => {
-                if (r.id === recipeItems?.[0]?.id) return;
-                return <RelatedItems key={r.id} {...r} />;
+                if (r?.id === recipeItems?.[0]?.id) return;
+                return <RelatedItems key={r?.id} {...r} />;
               })}
             </div>
             <Categories />
